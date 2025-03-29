@@ -6,9 +6,4 @@ socket                  = /run/mysqld/mysqld.sock  # Needed for local connection
 user                    = mysql       # Security: Run as non-root
 
 # WordPress-Specific Optimizations
-character-set-server    = utf8mb4     # Required for WordPress (supports emojis, non-Latin chars)
-collation-server        = utf8mb4_unicode_ci
-innodb_buffer_pool_size = 128M        # Improves performance (adjust based on container RAM)
-
-# Basic Security
-skip-name-resolve       = 1           # Faster + prevents DNS-based attacks
+innodb_buffer_pool_size = 128M        # Performance setting that allocates memory for caching database data and indexes
