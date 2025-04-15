@@ -1,9 +1,9 @@
 [mysqld]
 # Core Settings (Required)
-bind-address            = 0.0.0.0    # Allow connections from WordPress/Nginx
+bind-address            = 0.0.0.0    # Allow connections from any network (WordPress/Nginx)
 datadir                 = /var/lib/mysql  # Critical for Docker data persistence
 socket                  = /run/mysqld/mysqld.sock  # Needed for local connections
-user                    = mysql       # Security: Run as non-root
+user                    = mysql       # Security:  Runs the database as non-root use
 
 # WordPress-Specific Optimizations
 innodb_buffer_pool_size = 128M        # Performance setting that allocates memory for caching database data and indexes
