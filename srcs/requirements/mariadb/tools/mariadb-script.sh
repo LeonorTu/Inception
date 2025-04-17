@@ -3,7 +3,7 @@
 echo "==> Setting up MariaDB directory..."
 chmod -R 755 /var/lib/mysql
 
-mkdir -p /run/mysqld 
+mkdir -p /run/mysqld
 
 chown -R mysql:mysql /var/lib/mysql /run/mysqld
 
@@ -28,4 +28,4 @@ else
 fi
 
 echo "==> Starting MariaDB server..."
-exec mysqld --defaults-file=/etc/my.cnf.d/mariadb_config
+exec mysqld --defaults-file=/etc/my.cnf.d/mariadb.cnf

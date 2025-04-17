@@ -5,8 +5,8 @@ FROM alpine:3.20.6
 RUN apk update && apk add mariadb mariadb-client
 
 # Copy custom MariaDB config
-COPY ./conf/mariadb_config /etc/my.cnf.d/mariadb_config
-RUN chmod 644 /etc/my.cnf.d/mariadb_config
+COPY ./conf/mariadb.cnf /etc/my.cnf.d/mariadb.cnf
+RUN chmod 644 /etc/my.cnf.d/mariadb.cnf
 
 # Copy and make the startup script executable
 COPY ./tools/mariadb-script.sh /usr/local/bin/mariadb-script.sh
