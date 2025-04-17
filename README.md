@@ -46,6 +46,10 @@ scp -P 4241 -r /local/path user@localhost:~/remote/path
 # VM to Local
 scp -P 4241 -r user@localhost:~/remote/path /local/path
 ```
+For evaluation
+```sh
+scp -P 4241 -r /home/jtu/eval/evalname jtu@localhost:~/Desktop/Evaluation/evalname
+```
 
 ### Docker Cleanup
 Clean up Docker by stopping, removing, and deleting all containers, images, volumes and networks:
@@ -54,3 +58,76 @@ Clean up Docker by stopping, removing, and deleting all containers, images, volu
 docker stop $(docker ps -qa); docker rm $(docker ps -qa);
 docker rmi -f $(docker images -qa); docker volume rm $(docker volume ls -q); docker network rm $(docker network ls -q) 2>/dev/null
 ```
+
+### View the Whole Inception Installation and Configuration Process
+Run the following command to build and start all containers while displaying messages:
+```sh
+cd srcs
+docker-compose up --build
+```
+
+### See Running Containers
+To list all running containers:
+```sh
+docker ps
+```
+
+### See Logs for a Specific Container
+To view logs for a specific container:
+```sh
+docker logs <container-name>
+```
+
+Alternatively, you can use:
+```sh
+cd ./srcs | docker-compose logs <container-name>
+```
+
+### Search for Hardcoded Credential
+Search for sensitive keywords like "password", "key", "secret", etc.
+```sh
+grep -r "password" .
+grep -r "key" .
+grep -r "secret" .
+```
+
+### Check SSL/TLS Certificate
+Use the following command to check the SSL/TLS certificate of your server:
+```sh
+openssl s_client -connect jtu.42.fr:443
+```
+
+### Inspect Docker Volumes
+Inspect the details of a specific Docker volume:
+```sh
+docker volume inspect srcs_mariadb_data
+```
+
+### Access the Database
+To access the MariaDB database inside the container:
+```sh
+docker exec -it mariadb sh
+mysql -u root -p
+```
+
+Once inside the MySQL shell, you can run the following commands:
+
+- Show all databases:
+  ```sql
+  SHOW DATABASES;
+  ```
+
+- Use the WordPress database:
+  ```sql
+  USE wordpress_db;
+  ```
+
+- Show all tables in the WordPress database:
+  ```sql
+  SHOW TABLES;
+  ```
+
+- View the contents of the `wp_users` table:
+  ```sql
+  SELECT * FROM wp_users;
+  ```
