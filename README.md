@@ -100,8 +100,15 @@ openssl s_client -connect jtu.42.fr:443
 ### Inspect Docker Volumes
 Inspect the details of a specific Docker volume:
 ```sh
-docker volume inspect srcs_mariadb_data
+docker volume inspect mariadb
+docker volume inspect wordpress
 ```
+
+### Access the service via http (port 80)
+```sh
+curl -I http://jtu.42.fr
+```
+
 
 ### Access the Database
 To access the MariaDB database inside the container:
