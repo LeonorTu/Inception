@@ -57,4 +57,4 @@ fi
 echo "==> Starting MariaDB server..."
 # Start MariaDB with custom configuration and replace this shell process
 # Using exec ensures proper signal handling (container can be stopped cleanly)
-exec mysqld --defaults-file=/etc/my.cnf.d/mariadb_config
+exec mysqld --defaults-file=/etc/my.cnf.d/mariadb.cnf
